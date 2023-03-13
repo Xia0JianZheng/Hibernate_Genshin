@@ -8,16 +8,27 @@ import javax.persistence.Query;
 import java.io.IOException;
 import java.sql.Connection;
 
+/**
+ * clase donde maneja los acciones sobre las tablas de base de datos
+ */
 public class TableController {
     private Connection connection;
     private EntityManagerFactory entityManagerFactory;
 
-
+    /**
+     * constructor de tableController
+     * @param connection la conneccion de base de datos
+     * @param entityManagerFactory manejar la connection
+     */
     public TableController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
     }
 
+    /**
+     * metodo que añade toda las tablas a la base de datos
+     * @throws IOException
+     */
     public void addAllTables() throws IOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
@@ -88,9 +99,11 @@ public class TableController {
         } finally {
             entityManager.close();
         }
-
     }
 
+    /**
+     * metodo que borra toda las tablas de la base de datos
+     */
     public void removeAllTables() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {

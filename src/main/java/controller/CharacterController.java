@@ -14,10 +14,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Esta clase es donde controla los metodos para la tabla de character
+ */
 public class CharacterController {
 
     private Connection connection;
     private EntityManagerFactory entityManagerFactory;
+
+    EntityManager em;
 
     Scanner sc = new Scanner(System.in);
     int characterID;
@@ -33,11 +38,22 @@ public class CharacterController {
         this.connection = connection;
     }
 
+    /**
+     * Constructor
+     * @param connection la connection de base de datos
+     * @param entityManagerFactory manejar la connection
+     */
     public CharacterController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
     }
 
+    /**
+     * metodo que le pasas un fichero csv de characters, se lo lee y lo añaden a la tabla de character
+     * @param filename el fichero csv donde contiene los infos de characters
+     * @return la lista de character
+     * @throws IOException si hay un error lanza una excepcion
+     */
     public List<Character> readCharactersFile(String filename) throws IOException {
         int characterId;
         String character_name;
@@ -71,7 +87,11 @@ public class CharacterController {
         }
         br.close();
 
-        EntityManager em = entityManagerFactory.createEntityManager();
+        return characterList;
+    }
+
+    public void addCharacterCSV(List<Character> characterList) {
+        em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
 
         for (Character c: characterList) {
@@ -84,11 +104,11 @@ public class CharacterController {
         }
         em.getTransaction().commit();
         em.close();
-
-
-        return characterList;
     }
 
+    /**
+     * metodo que añade un character con los infos de usuario
+     */
     public void addCharacter() {
         System.out.println("Indroduce el Id de character que quieres añadir");
         characterID = sc.nextInt();
@@ -121,6 +141,9 @@ public class CharacterController {
         em.close();
     }
 
+    /**
+     * metodo que muestra toda las characters de la tabla
+     */
     public void listCharacters() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -134,6 +157,9 @@ public class CharacterController {
         em.close();
     }
 
+    /**
+     * metodo que muestra la lista de characters con un region
+     */
     public void listCharactersWithRegion() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -150,6 +176,9 @@ public class CharacterController {
         em.close();
     }
 
+    /**
+     * metodo que muestra la lista de characters con un tipo de elemento
+     */
     public void listCharactersWithElement() {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -166,6 +195,9 @@ public class CharacterController {
         em.close();
     }
 
+    /**
+     * Metodo que coge un ID de character y modifica los informacion sobre ese character
+     */
     public void updateCharacter() {
         System.out.println("Indroduce el Id de character que quieres modificar");
         characterID = sc.nextInt();
@@ -208,6 +240,9 @@ public class CharacterController {
         em.close();
     }
 
+    /**
+     * Metodo que coge un id de character y lo borra de la tabla
+     */
     public void deleteCharacter() {
         System.out.println("Indroduce el Id de character que quieres borrar");
         characterID = sc.nextInt();

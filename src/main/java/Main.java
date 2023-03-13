@@ -1,14 +1,8 @@
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 
 import controller.*;
 import database.ConnectionFactory;
-import model.Artifact;
-import model.Character;
-import model.Region;
-import model.Weapon;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -74,7 +68,6 @@ public class Main {
     TableController tableController = new TableController(c,entityManagerFactory);
     CharacterController characterController = new CharacterController(c, entityManagerFactory);
     WeaponController weaponController = new WeaponController(c, entityManagerFactory);
-    ArtifactController artifactController = new ArtifactController(c, entityManagerFactory);
     ElementController elementController = new ElementController(c, entityManagerFactory);
     RegionController regionController = new RegionController(c, entityManagerFactory);
 
@@ -82,7 +75,7 @@ public class Main {
     int option;
     option = menu.mainMenu();
 
-    while (option != 5) {
+    while (option != 4) {
       switch (option) {
         case 1 -> {
           int tableOption = menu.tableMenu();
@@ -104,7 +97,9 @@ public class Main {
           while (characterOption != 8){
             switch (characterOption){
               case 1 -> characterController.addCharacter();
-              case 2 -> characterController.readCharactersFile("src/main/resources/characters.csv");
+              case 2 -> {
+                characterController.addCharacterCSV(characterController.readCharactersFile("src/main/resources/characters.csv"));
+              }
               case 3 -> characterController.listCharacters();
               case 4 -> characterController.listCharactersWithRegion();
               case 5 -> characterController.listCharactersWithElement();
@@ -117,36 +112,24 @@ public class Main {
         }
        case 3 -> {
           int weaponOption = menu.weaponMenu();
-          while (weaponOption != 6){
+          while (weaponOption != 7){
             switch (weaponOption){
               case 1 -> weaponController.addWeapon();
-              case 2 -> weaponController.addWeaponUsingCSV();
-              case 3 -> weaponController.showAllWeapons();
-              case 4 -> weaponController.showWeaponWithType();
-              case 5 -> weaponController.removeOneWeapon();
+              case 2 -> {
+                weaponController.addWeaponCSV(weaponController.readWeaponFile("src/main/resources/weapons.csv","src/main/resources/characters.csv"));
+              }
+              case 3 -> weaponController.listWeapons();
+              case 4 -> weaponController.listWeaponsWithType();
+              case 5 -> weaponController.updateWeapon();
+              case 6 -> weaponController.deleteWeapon();
               default -> System.out.println("option not found, try again");
             }
             weaponOption = menu.weaponMenu();
           }
-        }
-
- /*       case 4 -> {
-          int artifactOption = menu.artifactMenu();
-          while (artifactOption != 6){
-            switch (artifactOption){
-              case 1 -> artifactController.addArtifactSet();
-              case 2 -> artifactController.addArtifactSetUsingCSV();
-              case 3 -> artifactController.showAllArtifacts();
-              case 4 -> artifactController.showSpecificArtifact();
-              case 5 -> artifactController.removeOneArtifactSet();
-              default -> System.out.println("option not found, try again");
-            }
-            artifactOption = menu.artifactMenu();
-          }
-        }
+      }
         default -> System.out.println("option not found, try again");
-*/      }
-      option = menu.mainMenu();
+      }
+        option = menu.mainMenu();
     }
   }
 }

@@ -26,7 +26,8 @@ weapon_rarity INT,
 weapon_image text,
 weapon_description text,
 weapon_type text,
-base_atk text
+base_atk text,
+character_id INT
 );
 
 CREATE TABLE artifact(

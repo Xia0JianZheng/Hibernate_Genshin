@@ -25,8 +25,7 @@ public class Menu {
         System.out.println("- 	1. Access to Table menu		  -");
         System.out.println("-	2. Access to Character table  -");
         System.out.println("-	3. Access to Weapon table	  -");
-        System.out.println("-	4. Access to Artifact table	  -");
-        System.out.println("-	5. Exit						  -");
+        System.out.println("-	4. Exit						  -");
         System.out.println("-----------------------------------");
 
         System.out.println("Choose a option : ");
@@ -74,7 +73,7 @@ public class Menu {
         System.out.println("-	3. Show all the Characters				-");
         System.out.println("-	4. Show all characters with region name -");
         System.out.println("-	5. show all characters with element		-");
-        System.out.println("-	6. modificate character with id 		-");
+        System.out.println("-	6. modifier character ifo with id 	    -");
         System.out.println("-	7. Delete a Character					-");
         System.out.println("-	8. Back to Main Menu		 		    -");
         System.out.println("---------------------------------------------");
@@ -93,42 +92,17 @@ public class Menu {
      * @return retorna las opciones
      */
     public int weaponMenu(){
-        System.out.println("-------------------------------------------");
-        System.out.println("-	      		Weapon Menu       	  	  -");
-        System.out.println("-------------------------------------------");
-        System.out.println("-	1. Add a Weapon			   		      -");
-        System.out.println("-	2. Add an Weapons using CSV File	  -");
-        System.out.println("-	3. Show all the Weapons			  	  -");
-        System.out.println("-	4. show all Weapons with weapon type  -");
-        System.out.println("-	5. Delete a Weapon 				  	  -");
-        System.out.println("-	6. Back to Main Menu		  		  -");
-        System.out.println("-------------------------------------------");
-
-        System.out.println("Choose a option : ");
-        try{
-            option = sc.nextInt();
-        }catch (Exception e){
-            System.out.println("The option you have choice doesn't exist");
-        }
-        return option;
-    }
-
-    /**
-     * Menu que contiene los opciones que controla la tabla de artifact
-     * @return retorna las opciones
-     */
-
-    public int artifactMenu(){
-        System.out.println("-----------------------------------------");
-        System.out.println("-	      	Artifact Menu     	  		-");
-        System.out.println("-----------------------------------------");
-        System.out.println("-	1. Add a Artifact					-");
-        System.out.println("-	2. Add an Artifacts using CSV File  -");
-        System.out.println("-	3. Show all the Artifacts			-");
-        System.out.println("-	4. Show a specific Artifact			-");
-        System.out.println("-	5. Delete a Artifact				-");
-        System.out.println("-	6. Back to Main Menu		 	    -");
-        System.out.println("-----------------------------------------");
+        System.out.println("---------------------------------------------");
+        System.out.println("-	      		Weapon Menu       	  	    -");
+        System.out.println("---------------------------------------------");
+        System.out.println("-	1. Add a Weapon			   		        -");
+        System.out.println("-	2. Add an Weapons using CSV File	    -");
+        System.out.println("-	3. Show all the Weapons			  	    -");
+        System.out.println("-	4. show all Weapons with weapon type    -");
+        System.out.println("-	5. modifier Weapons information with id -");
+        System.out.println("-	5. Delete a Weapon 				  	    -");
+        System.out.println("-	6. Back to Main Menu		  		    -");
+        System.out.println("---------------------------------------------");
 
         System.out.println("Choose a option : ");
         try{
