@@ -19,6 +19,11 @@ public class Character implements Serializable{
     @Column(name = "id_character")
     int characterId;
     /**
+     * id de la weapon que utiliza
+     */
+    @Column(name = "id_weapon")
+    int weaponId;
+    /**
      * el nombre de la character
      */
     @Column(name = "character_name", length = 30)
@@ -53,6 +58,9 @@ public class Character implements Serializable{
      */
     @Column(name = "weapon_type")
     String weapontype;
+    @OneToMany(mappedBy = "character")
+    private List<Weapon> weapons = new ArrayList<Weapon>();
+
 
     /**
      * constructor of the class character
@@ -65,8 +73,9 @@ public class Character implements Serializable{
      * @param regionName the region of the character
      * @param weapontype the type of the character
      */
-    public Character(int characterId, String characterName, int characterRarity, String characterImage, String characterDescription, String elementName, String regionName, String weapontype) {
+    public Character(int characterId, int weaponId, String characterName, int characterRarity, String characterImage, String characterDescription, String elementName, String regionName, String weapontype) {
         this.characterId = characterId;
+        this.weaponId = weaponId;
         this.characterName = characterName;
         this.characterRarity = characterRarity;
         this.characterImage = characterImage;
@@ -100,9 +109,27 @@ public class Character implements Serializable{
     }
 
     /**
+     * getter de id de la arma
+     * @return id de la arma
+     */
+    public int getWeaponId() {
+        return weaponId;
+    }
+
+    /**
+     * setter de la id de la arma
+     * @param weaponId id de la arma
+     */
+    public void setWeaponId(int weaponId) {
+        this.weaponId = weaponId;
+    }
+
+    /**
      * getter of the character name
      * @return character name
      */
+
+
     public String getCharacterName() {
         return characterName;
     }
@@ -210,22 +237,48 @@ public class Character implements Serializable{
     }
 
     /**
+     * getter lista de weapon
+     * @return lista de weapon
+     */
+    public List<Weapon> getWeapons() {
+        return weapons;
+    }
+
+    /**
+     * setter de weapon
+     * @param weapons weapon
+     */
+    public void setWeapons(List<Weapon> weapons) {
+        this.weapons = weapons;
+    }
+
+    /**
      * show all info of the character
      * @return info character
      */
     @Override
     public String toString() {
 
-        return "Character{" +
+        String result = "Character{" +
                 "characterId=" + characterId +
+                "weaponId=" + weaponId +
                 ", characterName='" + characterName + '\'' +
                 ", characterRarity=" + characterRarity +
                 ", characterImage='" + characterImage + '\'' +
                 ", characterDescription='" + characterDescription + '\'' +
                 ", elementName='" + elementName + '\'' +
                 ", regionName='" + regionName + '\'' +
-                ", weapontype='" + weapontype + '\'' +
-                 '}';
+                ", weapontype='" + weapontype + '\'';
 
+        result += "\n Llista de weapons: [ \n";
+
+        for (Weapon w : weapons) {
+            result += "\t";
+            result += w.toString();
+            result += "\n";
+        }
+        result += "] \n";
+
+        return result;
     }
 }

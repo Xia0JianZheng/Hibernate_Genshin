@@ -9,15 +9,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/CharacterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CharacterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ElementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ElementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ConnectionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WeaponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WeaponController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Element.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Region.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/characters.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/characters.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/weapons.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/weapons.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678726551663</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Inicial Commit">
+      <created>1678805493271</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678805493271</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,6 +136,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/controller/ElementController.java</url>
           <line>75</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/WeaponController.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

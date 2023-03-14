@@ -31,9 +31,7 @@ public class WeaponController {
     String weapon_description;
     String weapon_type;
     String base_atk;
-    int characterId;
 
-    private CharacterController characterController = new CharacterController(connection,entityManagerFactory);
 
 
     List<Character> charactersList;
@@ -59,11 +57,10 @@ public class WeaponController {
     /**
      * metodo que lee los ficheros csv y pone los infos de weapons en una lista
      * @param weaponFile fichero donde tiene infos de weapon
-     * @param characterFile fichero donde tiene infos de character
      * @return una lista de weapons
      * @throws IOException lanza una excepcion cuando ocurre una error
      */
-    public List<Weapon> readWeaponFile(String weaponFile, String characterFile)
+    public List<Weapon> readWeaponFile(String weaponFile)
             throws IOException {
         int weaponId, characterId;
         String weapon_name;
@@ -75,7 +72,6 @@ public class WeaponController {
 
         BufferedReader br = new BufferedReader(new FileReader(weaponFile));
         String linea = "";
-        charactersList = characterController.readCharactersFile(characterFile);
         List<Weapon> weaponsList = new ArrayList<>();
 
         while ((linea = br.readLine()) != null) {
@@ -87,9 +83,8 @@ public class WeaponController {
             weapon_description = str.nextToken();
             weapon_type = str.nextToken();
             base_atk = str.nextToken();
-            characterId = Integer.parseInt(str.nextToken());
             try {
-                weaponsList.add(new Weapon(weaponId, weapon_name, weapon_rarity, weapon_image, weapon_description, weapon_type, base_atk, charactersList.get(characterId - 1)));
+                weaponsList.add(new Weapon(weaponId, weapon_name, weapon_rarity, weapon_image, weapon_description, weapon_type, base_atk));
             } catch (Exception e) {
                 System.err.println("Errada format data al fitxer");
                 e.printStackTrace();
@@ -138,9 +133,7 @@ public class WeaponController {
         weapon_description = sc.nextLine();
         System.out.println("Que tipo de arma es?");
         weapon_type = sc.nextLine();
-        System.out.println("A quien lo pertenece? (id_character)");
-        characterId = sc.nextInt();
-        Weapon w1 = new Weapon(weaponID, weapon_name, weapon_rarity, weapon_image, weapon_description,weapon_type,base_atk,charactersList.get(characterId - 1));
+        Weapon w1 = new Weapon(weaponID, weapon_name, weapon_rarity, weapon_image, weapon_description,weapon_type,base_atk);
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Weapon weaponExist = (Weapon) em.find(Weapon.class, w1.getId_weapon());
@@ -207,12 +200,8 @@ public class WeaponController {
         weapon_description = sc.nextLine();
         System.out.println("Indroduce el nuevo elemento del weapon ");
         base_atk = sc.nextLine();
-        System.out.println("Indroduce el nuevo region del weapon ");
-        characterId = sc.nextInt();
         System.out.println("Indroduce el nuevo tipo del weapon");
         weapon_type = sc.nextLine();
-        System.out.println("A quien lo pertenece? (id_character)");
-        characterId = sc.nextInt();
 
         try {
             Weapon weapon = (Weapon) em.find(Weapon.class, weaponID);
@@ -223,7 +212,6 @@ public class WeaponController {
             weapon.setWeapon_description(weapon_description);
             weapon.setWeapon_type(weapon_type);
             weapon.setBase_atk(base_atk);
-            weapon.setCharacter(charactersList.get(characterId - 1));
 
             em.merge(weapon);
             em.getTransaction().commit();

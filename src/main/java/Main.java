@@ -136,7 +136,7 @@ public class Main {
             switch (weaponOption){
               case 1 -> weaponController.addWeapon();
               case 2 -> {
-                weaponController.addWeaponCSV(weaponController.readWeaponFile("src/main/resources/weapons.csv","src/main/resources/characters.csv"));
+                weaponController.addWeaponCSV(weaponController.readWeaponFile("src/main/resources/weapons.csv"));
               }
               case 3 -> weaponController.listWeapons();
               case 4 -> weaponController.listWeaponsWithType();

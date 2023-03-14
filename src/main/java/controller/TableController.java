@@ -50,6 +50,7 @@ public class TableController {
 
             String createTableCharacterQuery = "CREATE TABLE character(" +
                     "id_character serial PRIMARY KEY," +
+                    "id_weapon INt," +
                     "character_name text," +
                     "character_rarity text," +
                     "character_image text," +
