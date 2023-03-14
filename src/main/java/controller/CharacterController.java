@@ -34,6 +34,10 @@ public class CharacterController {
     String character_region;
     String weapon_type;
 
+    /**
+     * Constructor de la clase character controller
+     * @param connection conneccion de la base de datos
+     */
     public CharacterController(Connection connection) {
         this.connection = connection;
     }
@@ -90,6 +94,10 @@ public class CharacterController {
         return characterList;
     }
 
+    /**
+     * metodo que añade una lista de characters a la base de datos
+     * @param characterList una lista que contiene characters
+     */
     public void addCharacterCSV(List<Character> characterList) {
         em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();

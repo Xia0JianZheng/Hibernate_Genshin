@@ -5,10 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+/**
+ * Clase donde contiene toda las menus de la programa
+ */
 public class Menu {
     private int option;
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * constructor
+     */
     public Menu() {
         super();
     }

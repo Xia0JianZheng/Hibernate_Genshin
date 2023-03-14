@@ -11,21 +11,45 @@ import java.util.Date;
 @Access(AccessType.FIELD)
 @Table(name = "weapon")
 public class Weapon implements Serializable {
+    /**
+     * el id de la arma
+     */
     @Id
     @Column(name = "id_weapon")
     int id_weapon;
+    /**
+     * el nombre de la arma
+     */
     @Column(name = "weapon_name", length = 30)
     String weapon_name;
+    /**
+     * la rareza de la arma
+     */
     @Column(name = "weapon_rarity", length = 30)
     int weapon_rarity;
+    /**
+     * la imagen de la arma
+     */
     @Column(name = "weapon_image", length = 1000)
     String weapon_image;
+    /**
+     *el descripcion de la arma
+     */
     @Column(name = "weapon_description", length = 1000)
     String weapon_description;
+    /**
+     * el tipo de la arma que pertenece
+     */
     @Column(name = "weapon_type", length = 100)
     String weapon_type;
+    /**
+     * el ataque basico que tiene la arma
+     */
     @Column(name = "base_atk", length = 30)
     String base_atk;
+    /**
+     * el character que lo utiliza
+     */
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_character")
     public Character character;

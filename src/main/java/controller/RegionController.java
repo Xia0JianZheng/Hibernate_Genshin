@@ -13,19 +13,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * clase donde maneja la tabla region
+ */
 public class RegionController {
     private Connection connection;
     private EntityManagerFactory entityManagerFactory;
 
+    /**
+     * constructor de la clase RegionController
+     * @param connection coneccion de la base de datos
+     */
     public RegionController(Connection connection) {
         this.connection = connection;
     }
 
+    /**
+     * constructor de la clase RegionController
+     * @param connection connection de la base de datos
+     * @param entityManagerFactory manejar la connection
+     */
     public RegionController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
     }
 
+    /**
+     * Metodo que lee un fichero que contiene los region y se inserta a la tabla region
+     * @param filename fichero csv que contenga los regions
+     * @return una lista de region
+     * @throws IOException excepcion
+     */
     public List<Region> readRegionsFile(String filename) throws IOException {
         int regionId;
         String region_name;

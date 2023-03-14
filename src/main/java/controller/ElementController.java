@@ -14,20 +14,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * Clase que controla los acciones de la tabla element
+ */
 public class ElementController {
 
     private Connection connection;
     private EntityManagerFactory entityManagerFactory;
 
+    /**
+     * Constructor de la clase elementController
+     * @param connection connection de la base de datos
+     */
     public ElementController(Connection connection) {
         this.connection = connection;
     }
 
+    /**
+     * Constructor de la clase elementController
+     * @param connection connection de la base de datos
+     * @param entityManagerFactory manejar la connection
+     */
     public ElementController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
     }
 
+    /**
+     * metodo que lee el fichero csv y meterlos en la tabla element
+     * @param filename fichero csv que contiene los elments
+     * @return una lista de element
+     * @throws IOException sale una excepcion si se peta
+     */
     public List<Element> readElementsFile(String filename) throws IOException {
         int id_element;
         String element_name;

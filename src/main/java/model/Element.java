@@ -10,11 +10,15 @@ import java.io.Serializable;
 @Access(AccessType.FIELD)
 @Table(name = "element")
 public class Element implements Serializable {
-
+    /**
+     * el id del elemento
+     */
     @Id
     @Column(name = "id_element")
     int id_element;
-
+    /**
+     * el nombre del elemento
+     */
     @Column(name="element_name")
     String element_name;
 

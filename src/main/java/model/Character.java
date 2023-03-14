@@ -12,25 +12,45 @@ import java.util.List;
 @Access(AccessType.FIELD)
 @Table(name = "character")
 public class Character implements Serializable{
+    /**
+     * id de la character
+     */
     @Id
     @Column(name = "id_character")
     int characterId;
+    /**
+     * el nombre de la character
+     */
     @Column(name = "character_name", length = 30)
     String characterName;
+    /**
+     * la rareza de la character
+     */
     @Column(name = "character_rarity")
     int characterRarity;
+    /**
+     * la image de la character
+     */
     @Column(name = "character_image")
     String characterImage;
-
+    /**
+     * el descripcion de la character
+     */
     @Column(name = "character_description")
     String characterDescription;
-
+    /**
+     * el elemeto de la character
+     */
     @Column(name = "element_name")
     String elementName;
-
+    /**
+     * el region de la character
+     */
     @Column(name = "region_name")
     String regionName;
-
+    /**
+     * el tipo de arma que utiliza la character
+     */
     @Column(name = "weapon_type")
     String weapontype;
 

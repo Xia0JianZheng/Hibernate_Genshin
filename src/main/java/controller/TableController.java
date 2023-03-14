@@ -27,7 +27,7 @@ public class TableController {
 
     /**
      * metodo que añade toda las tablas a la base de datos
-     * @throws IOException
+     * @throws IOException excepcion
      */
     public void addAllTables() throws IOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

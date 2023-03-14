@@ -14,9 +14,16 @@ import view.Menu;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
+/**
+ * Clase main donde ejecuta los menus y los metodos necessarias
+ */
 public class Main {
+  /**
+   * constructor vacio de la clase Main
+   */
+  public Main(){
 
+  }
   static SessionFactory sessionFactoryObj;
 /*
   private static SessionFactory buildSessionFactory() {
@@ -32,6 +39,10 @@ public class Main {
     return sessionFactoryObj;
   } */
 
+  /**
+   * Construye la ssesion con el fichero config
+   * @return la ssesion
+   */
   private static SessionFactory buildSessionFactory() {
     try {
       StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
@@ -45,6 +56,10 @@ public class Main {
     }
   }
 
+  /**
+   * Crear una manejo de coneccion
+   * @return emf
+   */
   public static EntityManagerFactory createEntityManagerFactory(){
     EntityManagerFactory emf;
     try {
@@ -56,6 +71,11 @@ public class Main {
     return emf;
   }
 
+  /**
+   * Contiene los menus y los metodo que funciona el programa
+   * @param args las entradas
+   * @throws IOException exception
+   */
   public static void main(String[] args) throws IOException {
 
     ConnectionFactory connectionFactory = ConnectionFactory.getInstance();

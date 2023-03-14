@@ -10,10 +10,15 @@ import java.io.Serializable;
 @Access(AccessType.FIELD)
 @Table(name = "region")
 public class Region implements Serializable {
-
+    /**
+     * el id del region
+     */
     @Id
     @Column(name = "id_region")
     int regionId;
+    /**
+     * el nombre del region
+     */
     @Column(name = "region_name")
     String region_name;
 

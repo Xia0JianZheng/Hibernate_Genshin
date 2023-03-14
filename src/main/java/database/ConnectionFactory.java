@@ -7,6 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Clase que crea connection a la base de datos
+ */
 public class ConnectionFactory {
     // init database constants
     private static final String DATABASE_DRIVER = "org.postgresql.Driver";
@@ -28,11 +31,18 @@ public class ConnectionFactory {
     // init properties object
     private Properties properties;
 
+    /**
+     * constructor de la clase connection factory
+     */
     private ConnectionFactory() {
         super();
         init();
     }
 
+    /**
+     * metodo que crea la instancia connection
+     * @return una instancia de la coneccion
+     */
     public static ConnectionFactory getInstance() {
         if (instance == null) {
             instance = new ConnectionFactory();
@@ -76,6 +86,10 @@ public class ConnectionFactory {
         return properties;
     }
 
+    /**
+     * metodo que inicia la connecion con el base de datos
+     * @return una connection
+     */
     // connect database
     public Connection connect() {
         if (connection == null) {
@@ -108,6 +122,9 @@ public class ConnectionFactory {
         return connection;
     }
 
+    /**
+     * metodo que deconecta de la base de datos
+     */
     // disconnect database
     public void disconnect() {
         if (connection != null) {
