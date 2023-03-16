@@ -54,6 +54,7 @@ public class WeaponController {
     /**
      * metodo que lee los ficheros csv y pone los infos de weapons en una lista
      * @param weaponFile fichero donde tiene infos de weapon
+     * @param characterFile fichero donde tiene infos de weapon
      * @return una lista de weapons
      * @throws IOException lanza una excepcion cuando ocurre una error
      */
@@ -113,7 +114,8 @@ public class WeaponController {
     }
 */
     /**
-     * metodo que añade un weapon con los infos de usuario
+     * metodo que añade un weapon
+     * @param weapon un weapon
      */
     public void addWeapon(Weapon weapon) {
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -161,9 +163,13 @@ public class WeaponController {
     public void updateWeapon() {
         System.out.println("Indroduce el Id de weapon que quieres modificar");
         weaponID = sc.nextInt();
+        sc.nextLine();
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         Weapon weapon = (Weapon) em.find(Weapon.class, weaponID);
+        System.out.println("Indroduce el nuevo nombre de la arma : ");
+        String newName = sc.nextLine();
+        weapon.setWeapon_name(newName);
         em.merge(weapon);
         em.getTransaction().commit();
         em.close();

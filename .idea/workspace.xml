@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3df25477-39b1-4523-9cf3-2f80b9230298" name="Changes" comment="Inicial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/CharacterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CharacterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TableController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WeaponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WeaponController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/characters.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/characters.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/weapons.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/weapons.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

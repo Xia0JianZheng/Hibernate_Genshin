@@ -95,10 +95,7 @@ public class CharacterController {
         return characterList;
     }
 
-    /**
-     * metodo que añade una lista de characters a la base de datos
-     * @param characterList una lista que contiene characters
-     */
+/*
     public void addCharacterCSV(List<Character> characterList) {
         em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -114,9 +111,10 @@ public class CharacterController {
         em.getTransaction().commit();
         em.close();
     }
-
+*/
     /**
-     * metodo que añade un character con los infos de usuario
+     * metodo que añade un character
+     * @param character un character
      */
     public void addCharacter(Character character) {
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -185,7 +183,7 @@ public class CharacterController {
      * Metodo que coge un ID de character y modifica los informacion sobre ese character
      */
     public void updateCharacter() {
-        System.out.println("Indroduce el Id de character que quieres modificar");
+     /*   System.out.println("Indroduce el Id de character que quieres modificar");
         characterID = sc.nextInt();
         sc.nextLine();
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -223,6 +221,18 @@ public class CharacterController {
             em.getTransaction().rollback();
             System.out.println(e);
         }
+        em.close();*/
+        System.out.println("Indroduce el Id de character que quieres modificar");
+        characterID = sc.nextInt();
+        sc.nextLine();
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Character character = (Character) em.find(Character.class, characterID);
+        System.out.println("Indroduce el nuevo nombre del character : ");
+        String newName = sc.nextLine();
+        character.setCharacterName(newName);
+        em.merge(character);
+        em.getTransaction().commit();
         em.close();
     }
 

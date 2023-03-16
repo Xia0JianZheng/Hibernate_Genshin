@@ -71,17 +71,17 @@ public class Menu {
      */
 
     public int characterMenu(){
-        System.out.println("---------------------------------------------");
-        System.out.println("-	    	  Character Menu    	  		-");
-        System.out.println("---------------------------------------------");
-        System.out.println("-	1. Add an Characters using CSV File 	-");
-        System.out.println("-	2. Show all the Characters				-");
-        System.out.println("-	3. Show all characters with region name -");
-        System.out.println("-	4. show all characters with element		-");
-        System.out.println("-	5. modifier character ifo with id 	    -");
-        System.out.println("-	6. Delete a Character					-");
-        System.out.println("-	7. Back to Main Menu		 		    -");
-        System.out.println("---------------------------------------------");
+        System.out.println("------------------------------------------------");
+        System.out.println("-	    	    Character Menu    	  		   -");
+        System.out.println("------------------------------------------------");
+        System.out.println("-	1. Add an Characters using CSV File 	   -");
+        System.out.println("-	2. Show all the Characters				   -");
+        System.out.println("-	3. Show all characters with region name    -");
+        System.out.println("-	4. show all characters with element		   -");
+        System.out.println("-	5. modifier character information with id  -");
+        System.out.println("-	6. Delete a Character					   -");
+        System.out.println("-	7. Back to Main Menu		 		       -");
+        System.out.println("------------------------------------------------");
 
         System.out.println("Choose a option : ");
         try{

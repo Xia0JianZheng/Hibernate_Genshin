@@ -219,6 +219,10 @@ public class Character implements Serializable{
         this.weapontype = weapontype;
     }
 
+    /**
+     * metodo que añade una weapon
+     * @param weapon un weapon
+     */
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
     }

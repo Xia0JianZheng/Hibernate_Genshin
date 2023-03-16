@@ -63,6 +63,7 @@ public class Weapon implements Serializable {
      * @param weapon_description el descripcion del weapon
      * @param weapon_type el tipo del weapon
      * @param base_atk el ataque del weapon
+     * @param character un character
      */
     public Weapon(int id_weapon, String weapon_name, int weapon_rarity, String weapon_image, String weapon_description, String weapon_type, String base_atk,Character character) {
         super();
