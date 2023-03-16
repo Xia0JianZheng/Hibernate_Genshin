@@ -58,7 +58,11 @@ public class Character implements Serializable{
      */
     @Column(name = "weapon_type")
     String weapontype;
-    @OneToMany(mappedBy = "character")
+    /**
+     * Lista de weapons que utiliza el character
+     */
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_character", referencedColumnName = "id_character")
     private List<Weapon> weapons = new ArrayList<Weapon>();
 
 
@@ -74,6 +78,7 @@ public class Character implements Serializable{
      * @param weapontype the type of the character
      */
     public Character(int characterId, int weaponId, String characterName, int characterRarity, String characterImage, String characterDescription, String elementName, String regionName, String weapontype) {
+        super();
         this.characterId = characterId;
         this.weaponId = weaponId;
         this.characterName = characterName;

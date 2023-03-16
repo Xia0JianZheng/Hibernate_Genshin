@@ -64,7 +64,8 @@ public class Weapon implements Serializable {
      * @param weapon_type el tipo del weapon
      * @param base_atk el ataque del weapon
      */
-    public Weapon(int id_weapon, String weapon_name, int weapon_rarity, String weapon_image, String weapon_description, String weapon_type, String base_atk) {
+    public Weapon(int id_weapon, String weapon_name, int weapon_rarity, String weapon_image, String weapon_description, String weapon_type, String base_atk,Character character) {
+        super();
         this.id_weapon = id_weapon;
         this.weapon_name = weapon_name;
         this.weapon_rarity = weapon_rarity;
@@ -72,6 +73,7 @@ public class Weapon implements Serializable {
         this.weapon_description = weapon_description;
         this.weapon_type = weapon_type;
         this.base_atk = base_atk;
+        this.character = character;
     }
 
     /**
