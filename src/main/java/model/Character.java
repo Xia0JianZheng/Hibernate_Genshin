@@ -19,11 +19,6 @@ public class Character implements Serializable{
     @Column(name = "id_character")
     int characterId;
     /**
-     * id de la weapon que utiliza
-     */
-    @Column(name = "id_weapon")
-    int weaponId;
-    /**
      * el nombre de la character
      */
     @Column(name = "character_name", length = 30)
@@ -77,10 +72,9 @@ public class Character implements Serializable{
      * @param regionName the region of the character
      * @param weapontype the type of the character
      */
-    public Character(int characterId, int weaponId, String characterName, int characterRarity, String characterImage, String characterDescription, String elementName, String regionName, String weapontype) {
+    public Character(int characterId, String characterName, int characterRarity, String characterImage, String characterDescription, String elementName, String regionName, String weapontype) {
         super();
         this.characterId = characterId;
-        this.weaponId = weaponId;
         this.characterName = characterName;
         this.characterRarity = characterRarity;
         this.characterImage = characterImage;
@@ -111,22 +105,6 @@ public class Character implements Serializable{
      */
     public void setCharacterId(int characterId) {
         this.characterId = characterId;
-    }
-
-    /**
-     * getter de id de la arma
-     * @return id de la arma
-     */
-    public int getWeaponId() {
-        return weaponId;
-    }
-
-    /**
-     * setter de la id de la arma
-     * @param weaponId id de la arma
-     */
-    public void setWeaponId(int weaponId) {
-        this.weaponId = weaponId;
     }
 
     /**
@@ -241,6 +219,10 @@ public class Character implements Serializable{
         this.weapontype = weapontype;
     }
 
+    public void addWeapon(Weapon weapon) {
+        weapons.add(weapon);
+    }
+
     /**
      * getter lista de weapon
      * @return lista de weapon
@@ -265,8 +247,7 @@ public class Character implements Serializable{
     public String toString() {
 
         String result = "Character{" +
-                "characterId=" + characterId +
-                "weaponId=" + weaponId +
+                "characterId=" + characterId + '\'' +
                 ", characterName='" + characterName + '\'' +
                 ", characterRarity=" + characterRarity +
                 ", characterImage='" + characterImage + '\'' +

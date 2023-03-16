@@ -77,6 +77,13 @@ public class Weapon implements Serializable {
     }
 
     /**
+     * Constructor vacio
+     */
+    public Weapon(){
+        super();
+    }
+
+    /**
      * getter id
      * @return weapon id
      */
@@ -218,7 +225,7 @@ public class Weapon implements Serializable {
                 ", weapon_description='" + weapon_description + '\'' +
                 ", weapon_type='" + weapon_type + '\'' +
                 ", base_atk='" + base_atk + '\'' +
-                ", character=" + character.toString() +
+                ", character=" + character.getCharacterName() +
                 '}';
     }
 }

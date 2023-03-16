@@ -61,7 +61,6 @@ public class CharacterController {
      */
     public List<Character> readCharactersFile(String filename) throws IOException {
         int characterId;
-        int weaponId;
         String character_name;
         int character_rarity;
         String character_image;
@@ -77,7 +76,6 @@ public class CharacterController {
         while ((linea = br.readLine()) != null) {
             StringTokenizer str = new StringTokenizer(linea, ",");
             characterId = Integer.parseInt(str.nextToken());
-            weaponId = Integer.parseInt(str.nextToken());
             character_name = str.nextToken();
             character_rarity = Integer.parseInt(str.nextToken());
             character_image = str.nextToken();
@@ -86,7 +84,7 @@ public class CharacterController {
             character_region = str.nextToken();
             weapon_type = str.nextToken();
             try {
-                characterList.add(new Character(characterId,weaponId,character_name,character_rarity,character_image,character_description,character_element,character_region,weapon_type));
+                characterList.add(new Character(characterId,character_name,character_rarity,character_image,character_description,character_element,character_region,weapon_type));
             } catch (Exception e) {
                 System.err.println("Errada format data al fitxer");
                 e.printStackTrace();
@@ -120,37 +118,11 @@ public class CharacterController {
     /**
      * metodo que añade un character con los infos de usuario
      */
-    public void addCharacter() {
-        System.out.println("Indroduce el Id de character que quieres añadir");
-        characterID = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Indroduce el Id de la arma que utiliza el character");
-        weaponId = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Indroduce el Nombre de character que quieres añadir");
-        character_name = sc.nextLine();
-        System.out.println("Indroduce la Rareza de character que quieres añadir");
-        character_rarity = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Indroduce el Image de character que quieres añadir");
-        character_image = sc.nextLine();
-        System.out.println("Indroduce el Descripcion de character que quieres añadir");
-        character_description = sc.nextLine();
-        System.out.println("Indroduce el elemento de character que quieres añadir");
-        character_element = sc.nextLine();
-        System.out.println("Indroduce el region de character que quieres añadir");
-        character_region = sc.nextLine();
-        System.out.println("Indroduce el tipo de arma de character que quieres añadir");
-        weapon_type = sc.nextLine();
-        Character c1 = new Character(characterID,weaponId,character_name,character_rarity,character_image,character_description,character_element,character_region,weapon_type);
+    public void addCharacter(Character character) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Character characterExist = (Character) em.find(Character.class, c1.getCharacterId());
-        if(characterExist == null){
-            System.out.println("character added");
-            em.persist(c1);
-        }
-        em.merge(c1);
+        em.merge(character);
+
         em.getTransaction().commit();
         em.close();
     }

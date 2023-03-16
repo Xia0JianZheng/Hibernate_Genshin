@@ -50,7 +50,6 @@ public class TableController {
 
             String createTableCharacterQuery = "CREATE TABLE character(" +
                     "id_character serial PRIMARY KEY," +
-                    "id_weapon INt," +
                     "character_name text," +
                     "character_rarity text," +
                     "character_image text," +
@@ -64,8 +63,9 @@ public class TableController {
 
             String createTableWeaponQuery = "CREATE TABLE weapon(" +
                     "id_weapon serial PRIMARY KEY," +
+                    "id_character integer," +
                     "weapon_name text," +
-                    "weapon_rarity INT," +
+                    "weapon_rarity integer," +
                     "weapon_image text," +
                     "weapon_description text," +
                     "weapon_type text," +
@@ -73,7 +73,7 @@ public class TableController {
                     ");";
             Query createTableWeapon = entityManager.createNativeQuery(createTableWeaponQuery);
             createTableWeapon.executeUpdate();
-
+/*
             String createTableArtifactQuery = "CREATE TABLE artifact(\n" +
                     "id_artifactSet serial," +
                     "set_name text," +
@@ -92,7 +92,7 @@ public class TableController {
                     ");";
             Query createTableArtifact = entityManager.createNativeQuery(createTableArtifactQuery);
             createTableArtifact.executeUpdate();
-
+*/
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
@@ -118,11 +118,11 @@ public class TableController {
             String dropTableWeaponQuery = "DROP TABLE IF EXISTS weapon";
             Query dropTableWeapon = entityManager.createNativeQuery(dropTableWeaponQuery);
             dropTableWeapon.executeUpdate();
-
+/*
             String dropTableArtifactQuery = "DROP TABLE IF EXISTS artifact";
             Query dropTableArtifact = entityManager.createNativeQuery(dropTableArtifactQuery);
             dropTableArtifact.executeUpdate();
-
+*/
 
             String dropTableRegionQuery = "DROP TABLE IF EXISTS region";
             Query dropTableRegion = entityManager.createNativeQuery(dropTableRegionQuery);

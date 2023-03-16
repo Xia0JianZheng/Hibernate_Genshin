@@ -74,14 +74,13 @@ public class Menu {
         System.out.println("---------------------------------------------");
         System.out.println("-	    	  Character Menu    	  		-");
         System.out.println("---------------------------------------------");
-        System.out.println("-	1. Add a Character				   		-");
-        System.out.println("-	2. Add an Characters using CSV File 	-");
-        System.out.println("-	3. Show all the Characters				-");
-        System.out.println("-	4. Show all characters with region name -");
-        System.out.println("-	5. show all characters with element		-");
-        System.out.println("-	6. modifier character ifo with id 	    -");
-        System.out.println("-	7. Delete a Character					-");
-        System.out.println("-	8. Back to Main Menu		 		    -");
+        System.out.println("-	1. Add an Characters using CSV File 	-");
+        System.out.println("-	2. Show all the Characters				-");
+        System.out.println("-	3. Show all characters with region name -");
+        System.out.println("-	4. show all characters with element		-");
+        System.out.println("-	5. modifier character ifo with id 	    -");
+        System.out.println("-	6. Delete a Character					-");
+        System.out.println("-	7. Back to Main Menu		 		    -");
         System.out.println("---------------------------------------------");
 
         System.out.println("Choose a option : ");
@@ -101,13 +100,11 @@ public class Menu {
         System.out.println("---------------------------------------------");
         System.out.println("-	      		Weapon Menu       	  	    -");
         System.out.println("---------------------------------------------");
-        System.out.println("-	1. Add a Weapon			   		        -");
-        System.out.println("-	2. Add an Weapons using CSV File	    -");
-        System.out.println("-	3. Show all the Weapons			  	    -");
-        System.out.println("-	4. show all Weapons with weapon type    -");
-        System.out.println("-	5. modifier Weapons information with id -");
-        System.out.println("-	5. Delete a Weapon 				  	    -");
-        System.out.println("-	6. Back to Main Menu		  		    -");
+        System.out.println("-	1. Add an Weapons using CSV File	    -");
+        System.out.println("-	2. Show all the Weapons			  	    -");
+        System.out.println("-	3. modifier Weapons information with id -");
+        System.out.println("-	4. Delete a Weapon 				  	    -");
+        System.out.println("-	5. Back to Main Menu		  		    -");
         System.out.println("---------------------------------------------");
 
         System.out.println("Choose a option : ");

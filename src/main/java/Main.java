@@ -1,7 +1,10 @@
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import controller.*;
+import model.Character;
+import model.Weapon;
 import database.ConnectionFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -114,17 +117,19 @@ public class Main {
         }
         case 2 -> {
           int characterOption = menu.characterMenu();
-          while (characterOption != 8){
+          while (characterOption != 7){
             switch (characterOption){
-              case 1 -> characterController.addCharacter();
-              case 2 -> {
-                characterController.addCharacterCSV(characterController.readCharactersFile("src/main/resources/characters.csv"));
+              case 1 -> {
+                List<Character> characters = characterController.readCharactersFile("src/main/resources/characters.csv");
+                for(Character character : characters){
+                  characterController.addCharacter(character);
+                }
               }
-              case 3 -> characterController.listCharacters();
-              case 4 -> characterController.listCharactersWithRegion();
-              case 5 -> characterController.listCharactersWithElement();
-              case 6 -> characterController.updateCharacter();
-              case 7 -> characterController.deleteCharacter();
+              case 2 -> characterController.listCharacters();
+              case 3 -> characterController.listCharactersWithRegion();
+              case 4 -> characterController.listCharactersWithElement();
+              case 5 -> characterController.updateCharacter();
+              case 6 -> characterController.deleteCharacter();
               default -> System.out.println("option not found, try again");
             }
             characterOption = menu.characterMenu();
@@ -132,16 +137,24 @@ public class Main {
         }
        case 3 -> {
           int weaponOption = menu.weaponMenu();
-          while (weaponOption != 7){
+          while (weaponOption != 5){
             switch (weaponOption){
-              case 1 -> weaponController.addWeapon();
-              case 2 -> {
-                weaponController.addWeaponCSV(weaponController.readWeaponFile("src/main/resources/weapons.csv"));
+              case 1 -> {
+                List<Character> characters = weaponController.readWeaponFile("src/main/resources/weapons.csv","src/main/resources/characters.csv");
+
+                for (int i = 0; i < characters.size(); i++) {
+                  System.out.println(characters.get(i).toString()+"\n");
+                  for (int j = 0; j < characters.get(i).getWeapons().size(); j++) {
+                    Character character = characters.get(i).getWeapons().get(j).getCharacter();
+                    Weapon weapon = characters.get(i).getWeapons().get(j);
+                    weapon.setCharacter(character);
+                    weaponController.addWeapon(weapon);
+                  }
+                }
               }
-              case 3 -> weaponController.listWeapons();
-              case 4 -> weaponController.listWeaponsWithType();
-              case 5 -> weaponController.updateWeapon();
-              case 6 -> weaponController.deleteWeapon();
+              case 2 -> weaponController.listWeapons();
+              case 3 -> weaponController.updateWeapon();
+              case 4 -> weaponController.deleteWeapon();
               default -> System.out.println("option not found, try again");
             }
             weaponOption = menu.weaponMenu();

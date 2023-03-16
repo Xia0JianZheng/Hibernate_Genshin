@@ -21,13 +21,14 @@ weapon_type text
 
 CREATE TABLE weapon(
 id_weapon serial PRIMARY KEY,
+id_character integer,
 weapon_name text,
-weapon_rarity INT,
+weapon_rarity integer,
 weapon_image text,
 weapon_description text,
 weapon_type text,
 base_atk text,
-character_id INT
+character_id integer
 );
 
 CREATE TABLE artifact(

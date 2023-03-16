@@ -22,6 +22,7 @@ public class WeaponController {
 
     private Connection connection;
     private EntityManagerFactory entityManagerFactory;
+    private CharacterController characterController = new CharacterController(connection);
 
     Scanner sc = new Scanner(System.in);
     int weaponID;
@@ -31,10 +32,6 @@ public class WeaponController {
     String weapon_description;
     String weapon_type;
     String base_atk;
-
-
-
-    List<Character> charactersList;
 
     /**
      * constructor of the class weaponController 1param
@@ -60,9 +57,10 @@ public class WeaponController {
      * @return una lista de weapons
      * @throws IOException lanza una excepcion cuando ocurre una error
      */
-    public List<Weapon> readWeaponFile(String weaponFile)
+
+    public List<Character> readWeaponFile(String weaponFile, String characterFile)
             throws IOException {
-        int weaponId, characterId;
+        int weaponId, characterID;
         String weapon_name;
         int weapon_rarity;
         String weapon_image;
@@ -72,11 +70,13 @@ public class WeaponController {
 
         BufferedReader br = new BufferedReader(new FileReader(weaponFile));
         String linea = "";
-        List<Weapon> weaponsList = new ArrayList<>();
+
+        List<Character> characterList = characterController.readCharactersFile(characterFile);
 
         while ((linea = br.readLine()) != null) {
             StringTokenizer str = new StringTokenizer(linea, ",");
             weaponId = Integer.parseInt(str.nextToken());
+            characterID = Integer.parseInt(str.nextToken());
             weapon_name = str.nextToken();
             weapon_rarity = Integer.parseInt(str.nextToken());
             weapon_image = str.nextToken();
@@ -84,7 +84,7 @@ public class WeaponController {
             weapon_type = str.nextToken();
             base_atk = str.nextToken();
             try {
-                weaponsList.add(new Weapon(weaponId, weapon_name, weapon_rarity, weapon_image, weapon_description, weapon_type, base_atk));
+                characterList.get(characterID - 1).addWeapon(new Weapon(weaponId,weapon_name,weapon_rarity,weapon_image,weapon_description,weapon_type,base_atk,characterList.get(characterID - 1)));
             } catch (Exception e) {
                 System.err.println("Errada format data al fitxer");
                 e.printStackTrace();
@@ -92,13 +92,10 @@ public class WeaponController {
         }
         br.close();
 
-        return weaponsList;
+        return characterList;
     }
 
-    /**
-     * metodo que añade una lista de weapons a la base de datos
-     * @param weaponsList la lista de weapons
-     */
+/*
     public void addWeaponCSV(List<Weapon> weaponsList) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -114,34 +111,14 @@ public class WeaponController {
         em.getTransaction().commit();
         em.close();
     }
-
+*/
     /**
      * metodo que añade un weapon con los infos de usuario
      */
-    public void addWeapon() {
-        System.out.println("Indroduce el Id de weapon ");
-        weaponID = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Indroduce el Nombre del weapon");
-        weapon_name = sc.nextLine();
-        System.out.println("Indroduce la Rareza del weapon ");
-        weapon_rarity = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Indroduce el Image del weapon ");
-        weapon_image = sc.nextLine();
-        System.out.println("Indroduce el Descripcion del weapon ");
-        weapon_description = sc.nextLine();
-        System.out.println("Que tipo de arma es?");
-        weapon_type = sc.nextLine();
-        Weapon w1 = new Weapon(weaponID, weapon_name, weapon_rarity, weapon_image, weapon_description,weapon_type,base_atk);
+    public void addWeapon(Weapon weapon) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Weapon weaponExist = (Weapon) em.find(Weapon.class, w1.getId_weapon());
-        if(weaponExist == null){
-            System.out.println("weapon added");
-            em.persist(w1);
-        }
-        em.merge(w1);
+        em.merge(weapon);
         em.getTransaction().commit();
         em.close();
     }
@@ -161,9 +138,7 @@ public class WeaponController {
         em.close();
     }
 
-    /**
-     * metodo que lista las weapons por el tipo
-     */
+/*
     public void listWeaponsWithType(){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -179,49 +154,19 @@ public class WeaponController {
         em.getTransaction().commit();
         em.close();
     }
-
+*/
     /**
      * metodo que modifica info de una weapon con el id
      */
     public void updateWeapon() {
-        System.out.println("Indroduce el Id de character que quieres modificar");
+        System.out.println("Indroduce el Id de weapon que quieres modificar");
         weaponID = sc.nextInt();
-        sc.nextLine();
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        System.out.println("Indroduce el nuevo Nombre del weapon ");
-        weapon_name = sc.nextLine();
-        System.out.println("Indroduce la nueva Rareza del weapon ");
-        weapon_rarity = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Indroduce el nuevo Image del weapon ");
-        weapon_image = sc.nextLine();
-        System.out.println("Indroduce el nuevo Descripcion del weapon ");
-        weapon_description = sc.nextLine();
-        System.out.println("Indroduce el nuevo elemento del weapon ");
-        base_atk = sc.nextLine();
-        System.out.println("Indroduce el nuevo tipo del weapon");
-        weapon_type = sc.nextLine();
-
-        try {
-            Weapon weapon = (Weapon) em.find(Weapon.class, weaponID);
-
-            weapon.setWeapon_name(weapon_name);
-            weapon.setWeapon_rarity(weapon_rarity);
-            weapon.setWeapon_image(weapon_image);
-            weapon.setWeapon_description(weapon_description);
-            weapon.setWeapon_type(weapon_type);
-            weapon.setBase_atk(base_atk);
-
-            em.merge(weapon);
-            em.getTransaction().commit();
-
-        } catch (Exception e){
-            em.getTransaction().rollback();
-            e.printStackTrace();
-        }
+        Weapon weapon = (Weapon) em.find(Weapon.class, weaponID);
+        em.merge(weapon);
+        em.getTransaction().commit();
         em.close();
-
     }
 
     /**
